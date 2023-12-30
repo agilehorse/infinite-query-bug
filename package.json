@@ -1,0 +1,57 @@
+{
+  "name": "fitwolfe",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "@fontsource/roboto": "5.0.8",
+    "@mui/icons-material": "5.14.19",
+    "@mui/lab": "5.0.0-alpha.155",
+    "@mui/material": "5.14.20",
+    "@mui/x-date-pickers": "6.18.5",
+    "@tanstack/react-query": "5.14.1",
+    "@tanstack/react-query-devtools": "5.14.1",
+    "@tanstack/react-store": "0.2.1",
+    "moment": "2.29.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.21.0",
+    "typescript": "5.1.6"
+  },
+  "overrides": {
+    "typescript": "5.1.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "CI=false && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "type-check": "tsc",
+    "find-deadcode": "ts-prune -u"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "proxy": "http://localhost:8080",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "@tanstack/eslint-plugin-query": "5.12.1",
+    "@types/node": "20.10.5",
+    "@types/react": "18.2.45",
+    "@types/react-dom": "18.2.18",
+    "react-scripts": "5.0.1"
+  }
+}
