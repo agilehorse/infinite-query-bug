@@ -2,7 +2,6 @@ import DataTab from "./DataTab";
 import {PERSON_STORE, TraineeStore_clear, TraineeStore_putData} from "./personStore";
 import {useEffect} from "react";
 import {useStore} from "@tanstack/react-store";
-import {CircularProgress} from "@mui/material";
 
 export default function Me() {
     const personStore = useStore(PERSON_STORE, state => state.person)
@@ -16,5 +15,5 @@ export default function Me() {
         }
     }, [])
 
-    return personStore ? <DataTab/> : < CircularProgress/>
+    return personStore ? <DataTab/> : <p>LOADING...</p>
 }

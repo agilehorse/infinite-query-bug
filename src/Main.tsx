@@ -1,22 +1,7 @@
 import {Navigate, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import Me from "./Me";
 import Client from "./Client";
-import {BottomNavigation, BottomNavigationAction, Box} from "@mui/material";
 import {useState} from "react";
-
-type routes = {
-    "/me": "/me",
-    "/client": "/client",
-    "/home": "/home"
-}
-
-
-const routesMap = {
-    "/me": "/me",
-    "/client": "/client",
-    "/home": "/home"
-}
-
 
 export default function Main() {
     const location = useLocation()
@@ -33,9 +18,19 @@ export default function Main() {
         }
     }
 
-    function onChange(_: any, newValue: keyof routes) {
-        setValue(newValue)
-        navigate(routesMap[newValue])
+    function onHomeClick() {
+        setValue("/home")
+        navigate("/home")
+    }
+
+    function onClientClick() {
+        setValue("/client")
+        navigate("/client")
+    }
+
+    function onMeClick() {
+        setValue("/me")
+        navigate("/me")
     }
 
     return (
@@ -48,34 +43,17 @@ export default function Main() {
                     <Me/>
                 }/>
                 <Route path="/home" element={
-                    <Box>
+                    <div>
                         Home
-                    </Box>
+                    </div>
                 }/>
                 <Route path="*" element={<Navigate to="/home"/>}/>
             </Routes>
-            <BottomNavigation
-                showLabels
-                value={value}
-                onChange={onChange}
-                color="secondary"
-            >
-                <BottomNavigationAction
-                    label="Home"
-                    value={routesMap["/home"]}
-                    color="secondary"
-                />
-                <BottomNavigationAction
-                    label="Client"
-                    color="secondary"
-                    value={routesMap["/client"]}
-                />
-                <BottomNavigationAction
-                    label="Me"
-                    color="secondary"
-                    value={routesMap["/me"]}
-                />
-            </BottomNavigation>
+            <div>
+                <button onClick={onHomeClick} style={value === "/home" ? {color: "red"} : undefined}>HOME</button>
+                <button onClick={onClientClick} style={value === "/client" ? {color: "red"} : undefined}>CLIENT</button>
+                <button onClick={onMeClick} style={value === "/me" ? {color: "red"} : undefined}>ME</button>
+            </div>
         </>
     )
 }

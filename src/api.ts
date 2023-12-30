@@ -1,6 +1,4 @@
-import moment, {Moment} from "moment";
-
-export type FormState = { personId: 1 | 2, dateFilter: { startingAt: Moment, endingAt: Moment } | undefined }
+export type FormState = { personId: 1 | 2, isPast: boolean }
 
 export type SearchTrainingSessionsForm = {
     size: number,
@@ -15,25 +13,9 @@ function tef_fillSessionFeKeys(things: Thing[]) {
 }
 
 export async function Api_getAll(form: SearchTrainingSessionsForm) {
-    const dateFilter = form.filter.dateFilter
     const traineeId = form.filter.personId;
 
-    let dto
-    if (dateFilter) {
-        dto = {
-            ...form,
-            filter: {
-                ...form.filter,
-                dateFilter: {
-                    startingAt: moment(dateFilter.startingAt).format("yyyy-MM-DD"),
-                    endingAt: moment(dateFilter.endingAt).format("yyyy-MM-DD")
-                }
-            }
-        }
-    } else {
-        dto = form
-    }
-    const things = await getUser(dto.filter.personId)
+    const things = await getUser(traineeId)
     tef_fillSessionFeKeys(things)
     return {elements: things, page: {number: 0, totalElements: 2}, personId: traineeId}
 }
